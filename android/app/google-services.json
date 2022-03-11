@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "87181491552",
+    "project_id": "codetalksdeneme",
+    "storage_bucket": "codetalksdeneme.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87181491552:android:25f772ef15507035d0b205",
+        "android_client_info": {
+          "package_name": "com.codetalksdeneme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "87181491552-c9j1m3i8lld2tqs0fbor1nvbpsftarf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE2k5wVMufjTuA-bfwK8sLoqUxQR0bRvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "87181491552-c9j1m3i8lld2tqs0fbor1nvbpsftarf4.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "87181491552-dlfb8e2rf6ce5v37l183nbfk7r07uc8f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codetalksdeneme"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
