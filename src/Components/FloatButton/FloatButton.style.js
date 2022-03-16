@@ -12,7 +12,7 @@ export default StyleSheet.create({
     height: 70,
     borderRadius: 50,
     borderWidth: 1,
-    borderColor: '#d7d8da',
+    borderColor: '#f39b3f',
   },
   text: {
     color: 'white',

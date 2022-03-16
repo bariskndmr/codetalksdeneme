@@ -4,8 +4,8 @@ import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 
 import FloatButton from 'src/Components/FloatButton';
-import RoomCard from 'src/Components/RoomCard';
-import RoomModal from 'src/Components/RoomModal';
+import RoomCard from 'src/Components/Cards/RoomCard';
+import RoomModal from 'src/Components/Modals/RoomModal';
 
 import Styles from './Rooms.style';
 
@@ -42,7 +42,7 @@ const Rooms = ({navigation}) => {
     setRoomModalVisible(!roomModalVisible);
   };
 
-  const handleSentRoomName = roomName => {
+  const handleSendRoomName = roomName => {
     handleModalToggle();
     sentRoomName(roomName);
   };
@@ -69,7 +69,7 @@ const Rooms = ({navigation}) => {
       <RoomModal
         visible={roomModalVisible}
         onClose={handleModalToggle}
-        onSend={handleSentRoomName}
+        onSend={handleSendRoomName}
       />
     </SafeAreaView>
   );

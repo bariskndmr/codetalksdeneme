@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, TextInput} from 'react-native';
 import Modal from 'react-native-modal';
 
-import Button from '../Button';
+import Button from '../../Button';
 
 import Styles from './RoomModal.style';
 
