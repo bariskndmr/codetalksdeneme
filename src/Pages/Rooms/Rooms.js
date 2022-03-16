@@ -9,7 +9,7 @@ import RoomModal from 'src/Components/RoomModal';
 
 import Styles from './Rooms.style';
 
-const Rooms = () => {
+const Rooms = ({navigation}) => {
   const [roomModalVisible, setRoomModalVisible] = useState(false);
   const [roomList, setRoomList] = useState([]);
 
@@ -30,7 +30,12 @@ const Rooms = () => {
   }, []);
 
   const roomListRender = item => {
-    return <RoomCard text={item.roomName} />;
+    return (
+      <RoomCard
+        text={item.roomName}
+        onPress={() => navigation.navigate('MessagesPage', item)}
+      />
+    );
   };
 
   const handleModalToggle = () => {
@@ -46,7 +51,7 @@ const Rooms = () => {
     const userEmail = auth().currentUser.email;
 
     const contentObject = {
-      roomName: roomName,
+      roomName: roomName.replace(/\s+/g, ''), // inputa değer girildiğinde boşlukları siler
       userName: userEmail.split('@')[0],
     };
 

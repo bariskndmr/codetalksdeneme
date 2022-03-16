@@ -3,6 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Login from 'src/Pages/Login';
+import Messages from './Pages/Messages';
 import Rooms from './Pages/Rooms';
 import Signup from './Pages/Signup';
 
@@ -43,6 +44,7 @@ const Router = () => {
             headerTintColor: '#ff9f3f',
           }}
         />
+        <Stack.Screen name="MessagesPage" component={Messages} />
       </Stack.Navigator>
     </NavigationContainer>
   );

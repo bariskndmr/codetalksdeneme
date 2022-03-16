@@ -5,7 +5,10 @@ import Styles from './RoomCard.style';
 
 const RoomCard = ({text, onPress}) => {
   return (
-    <TouchableOpacity style={Styles.container}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={onPress}
+      style={Styles.container}>
       <Text style={Styles.text}>{text}</Text>
     </TouchableOpacity>
   );
