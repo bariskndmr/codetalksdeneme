@@ -17,7 +17,15 @@ const Rooms = () => {
     database()
       .ref('Rooms/')
       .on('value', snapshot => {
-        setRoomList(snapshot.val());
+        const rooms = [];
+        snapshot.forEach(child => {
+          rooms.push({
+            key: child.key,
+            roomName: child.val().roomName,
+            userName: child.val().userName,
+          });
+        });
+        setRoomList(rooms);
       });
   }, []);
 
