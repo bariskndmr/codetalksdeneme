@@ -1,5 +1,5 @@
-import android.os.Bundle;
 package com.codetalksdeneme;
+import android.os.Bundle;
 
 import com.facebook.react.ReactActivity;
 
