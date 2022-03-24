@@ -2,6 +2,8 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import auth from '@react-native-firebase/auth';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import FlashMessage from 'react-native-flash-message';
 
 import Login from 'src/Pages/Login';
 import Messages from './Pages/Messages';
@@ -52,16 +54,34 @@ const Router = () => {
                 headerBackVisible: false,
                 headerTitle: 'Odalar',
                 headerTintColor: '#ff9f3f',
+                headerRight: () => (
+                  <Icon
+                    name="logout"
+                    size={30}
+                    onPress={() => auth().signOut()}
+                  />
+                ),
               }}
             />
             <Stack.Screen
               name="MessagesPage"
               component={Messages}
-              options={{title: 'Mesajlar', headerTintColor: '#ff9f3f'}}
+              options={{
+                title: 'Mesajlar',
+                headerTintColor: '#ff9f3f',
+                headerRight: () => (
+                  <Icon
+                    name="logout"
+                    size={30}
+                    onPress={() => auth().signOut()}
+                  />
+                ),
+              }}
             />
           </>
         )}
       </Stack.Navigator>
+      <FlashMessage position="top" />
     </NavigationContainer>
   );
 };

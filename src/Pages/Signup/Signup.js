@@ -2,13 +2,17 @@ import React from 'react';
 import {SafeAreaView, View, Text} from 'react-native';
 import {Formik} from 'formik';
 import auth from '@react-native-firebase/auth';
+import {showMessage} from 'react-native-flash-message';
 
+import AuthErrorMessageParser from 'src/Utils/authErrorMessageParser';
 import Button from 'src/Components/Button';
 import Input from 'src/Components/Input';
 
 import Styles from './Signup.style';
 
 const Signup = ({navigation}) => {
+  const [loading, setLoading] = React.useState(false);
+
   const handleLoginPage = () => {
     navigation.navigate('LoginPage');
   };
@@ -18,13 +22,32 @@ const Signup = ({navigation}) => {
     repassword: '',
   };
 
-  const handleSignup = ({email, repassword}) => {
-    auth()
-      .createUserWithEmailAndPassword(email, repassword)
-      .then(() => {
-        console.log('Başarılı');
-      })
-      .catch(error => console.log(error));
+  const handleSignup = async ({email, password, repassword}) => {
+    if (password !== repassword) {
+      showMessage({
+        message: 'Şifreler uyuşmuyor',
+        type: 'danger',
+      });
+    } else {
+      if (!email && !repassword) {
+        showMessage({
+          message: 'Bilgiler boş bırakılamaz!',
+          type: 'danger',
+        });
+      } else {
+        try {
+          setLoading(true);
+          await auth().createUserWithEmailAndPassword(email, repassword);
+          navigation.navigate('LoginPage');
+        } catch (error) {
+          showMessage({
+            message: AuthErrorMessageParser(error.code),
+            type: 'warning',
+          });
+          setLoading(false);
+        }
+      }
+    }
   };
 
   return (
@@ -53,7 +76,11 @@ const Signup = ({navigation}) => {
               isSecure={true}
             />
             <View style={Styles.buttonContainer}>
-              <Button text="Kayıt Ol" onPress={handleSubmit} />
+              <Button
+                text="Kayıt Ol"
+                onPress={handleSubmit}
+                isLoading={loading}
+              />
               <Button
                 text="Giriş Yap"
                 theme="secondary"
