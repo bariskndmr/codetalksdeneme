@@ -7,7 +7,7 @@ import Button from '../../Button';
 import Styles from './MessageModal.style';
 
 const MessageModal = ({onSend, visible, onClose}) => {
-  const [text, setText] = React.useState();
+  const [text, setText] = React.useState(null);
 
   React.useEffect(() => {
     setText(null);

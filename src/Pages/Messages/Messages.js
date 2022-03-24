@@ -21,7 +21,6 @@ const Messages = ({route}) => {
     sendMessage(content);
   };
 
-  // Malfromed error
   const sendMessage = content => {
     const userName = auth().currentUser.email;
 
@@ -31,9 +30,8 @@ const Messages = ({route}) => {
       date: new Date().toISOString(),
     };
 
-    database().ref(`Rooms/${key}/Messages`).push(contentObject);
+    database().ref(`Rooms/${key}/Messages/`).push(contentObject);
   };
-  // Malfromed error
 
   return (
     <SafeAreaView style={Styles.container}>
@@ -43,8 +41,8 @@ const Messages = ({route}) => {
       <FloatButton text="+" onPress={handleModalToggle} />
       <MessageModal
         visible={inputModalVisible}
-        onSend={sendMessage}
-        onClose={handleSendMessage}
+        onSend={handleSendMessage} // sendMessage'dan handleSendMessage olarak değiştirdim.
+        onClose={handleModalToggle} // handleSendMessage fonksiyonunu verdiğim için malformed size hatası veriyor
       />
     </SafeAreaView>
   );
